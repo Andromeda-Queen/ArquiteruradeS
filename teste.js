@@ -13,22 +13,42 @@ class Prototype {
 }
 
 // Exemplo de subclasse concreta
-class Pessoa extends Prototype {
-  constructor(nome, idade) {
+class Carro extends Prototype{
+  #marca;
+  #modelo;
+  #ano;
+  constructor(marca, modelo, ano){
     super();
-    this.nome = nome;
-    this.idade = idade;
+    this.#marca = marca;
+    this.#modelo = modelo;
+    this.#ano = ano;
   }
 
+
   clone() {
-    return new Pessoa(this.nome, this.idade);
+    return new Carro(this.#marca, this.#modelo, this.#ano);
+  }
+
+  getMarca(){
+    return this.#marca;
+  }
+  getModelo(){
+    return this.#modelo;
+  }
+  getano(){
+    return this.#ano;
+  }
+
+  Exibir(){
+    console.log('Carro: ${this.#marca} ${this.#modelo}, Ano: ${this.#ano}')
   }
 }
 
+
 // Testando
-const original = new Pessoa("Lucas", 30);
+const original = new Carro("A", "B", 30);
 const copia = original.clone();
 
-console.log(original); // Pessoa { nome: 'Lucas', idade: 30 }
-console.log(copia);    // Pessoa { nome: 'Lucas', idade: 30 }
-console.log(original === copia); // false (objetos diferentes)
+console.log(original); 
+console.log(copia); 
+console.log(original === copia); 
